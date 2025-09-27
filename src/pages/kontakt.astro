@@ -1,0 +1,248 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/Sections/PageHeader.astro";
+import Button from "../components/UI/Button.astro";
+---
+
+<BaseLayout
+  title="Kontakt - Parafia Św. Marii Magdaleny"
+  description="Skontaktuj się z naszą parafią. Znajdź nasze dane kontaktowe, lokalizację i rozkład Mszy Świętych."
+>
+  <PageHeader
+    title="Kontakt"
+    subtitle="Chętnie z Tobą porozmawiamy"
+    backgroundImage="/uploads/contact-header-bg.webp"
+  />
+  
+  <!-- Contact Information -->
+  <section class="py-16">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Napisz do nas</h2>
+          
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Imię i nazwisko</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+            
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon (opcjonalnie)</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+            
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Temat</label>
+              <select 
+                id="subject" 
+                name="subject" 
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              >
+                <option value="">Wybierz temat</option>
+                <option value="Pytanie ogólne">Pytanie ogólne</option>
+                <option value="Intencje mszalne">Intencje mszalne</option>
+                <option value="Wolontariat">Wolontariat</option>
+                <option value="Sakramenty">Sakramenty</option>
+                <option value="Inne">Inne</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Wiadomość</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+              ></textarea>
+            </div>
+            
+            <div>
+              <Button type="submit" variant="primary">
+                Wyślij wiadomość
+              </Button>
+            </div>
+          </form>
+          
+          <script>
+            // Handle form submission
+            document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+              e.preventDefault();
+              alert('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.');
+              this.reset();
+            });
+          </script>
+        </div>
+        
+        <!-- Contact Information -->
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Dane kontaktowe</h2>
+          
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold mb-1">Adres</h3>
+                <address class="not-italic text-gray-700">
+                  <p>ul. Okólna 3/3</p>
+                  <p>59-916 Bogatynia</p>
+                </address>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold mb-1">Telefon</h3>
+                <p class="text-gray-700">
+                  <a href="tel:+48757784219" class="hover:text-primary-600">
+                    +48 757 784 219
+                  </a>
+                </p>
+                <p class="text-gray-700 mt-1">
+                  <a href="tel:+48602170961" class="hover:text-primary-600">
+                    +48 602 170 961
+                  </a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold mb-1">Email</h3>
+                <p class="text-gray-700">
+                  <a href="mailto:almale@wp.pl" class="hover:text-primary-600">
+                    almale@wp.pl
+                  </a>
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold mb-1">Kancelaria Parafialna</h3>
+                <div class="text-gray-700">
+                  <p><strong>Poniedziałek - Piątek:</strong> Proszę umawiać się telefonicznie</p>
+                  <p><strong>Sobota:</strong> Po Mszy Świętej o 9:00</p>
+                  <p><strong>Niedziela:</strong> Po Mszach Świętych</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mt-1">
+                <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v2a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-bold mb-1">Konto bankowe</h3>
+                <div class="text-gray-700">
+                  <p class="mb-2"><strong>Konto Parafii:</strong> Santander Bank Polska S. A.</p>
+                  <p><strong>O/Bogatynia Nr:</strong> 31 1090 1971 0000 0001 3541 3733</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Znajdź nas w sieci</h3>
+            <div class="flex space-x-4">
+              <a href="mailto:almale@wp.pl" class="text-gray-600 hover:text-primary-600 transition-colors" title="Email">
+                <span class="sr-only">Email</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </a>
+
+              <a href="https://www.facebook.com/p/Parafia-Św-Marii-Magdaleny-w-Bogatyni-100079680919115/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 transition-colors" title="Facebook">
+                <span class="sr-only">Facebook</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Map Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Lokalizacja i dojazd</h2>
+      </div>
+      
+        <div class="bg-gray-200 rounded-lg overflow-hidden h-96">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2522.8899168777676!2d14.956445916032147!3d51.02012097956789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47110b4c8a8a8a8a%3A0x8a8a8a8a8a8a8a8a!2sOk%C3%B3lna%203%2C%2059-916%20Bogatynia%2C%20Poland!5e0!3m2!1sen!2sus!4v1635123456789!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa lokalizacji parafii Św. Marii Magdaleny w Bogatyni">
+          </iframe>
+        </div>
+    </div>
+  </section>
+</BaseLayout>

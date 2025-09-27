@@ -1,0 +1,256 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/Sections/PageHeader.astro";
+---
+
+<BaseLayout
+  title="Pogłębianie wiary - Parafia Św. Marii Magdaleny"
+  description="Formy pogłębiania wiary w parafii: adoracja, Żywy Różaniec, katechezy dla dorosłych, rekolekcje i formacja duchowa."
+>
+  <PageHeader
+    title="Pogłębianie wiary"
+    subtitle="Wzrastanie w miłości do Boga"
+    backgroundImage="/uploads/faith-bg.webp"
+  />
+
+  <section class="py-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Wprowadzenie -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Droga duchowego wzrostu</h2>
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Parafia Św. Marii Magdaleny oferuje różnorodne formy pogłębiania życia duchowego,
+            które pomagają wiernym zbliżyć się do Boga i wzrastać w wierze.
+          </p>
+        </div>
+
+        <!-- Regularne formy pobożności -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 text-center">Regularne formy pobożności</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Adoracja -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-yellow-700">Adoracja Najświętszego Sakramentu</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Po Mszy Świętej o 8:00 w niedziele organizujemy adorację Najświętszego Sakramentu.
+                To czas modlitwy, ciszy i osobistego spotkania z Jezusem.
+              </p>
+              <div class="bg-yellow-50 p-4 rounded-lg">
+                <p class="text-sm text-yellow-700">
+                  <strong>Kiedy:</strong> Niedziele po Mszy o 8:00<br>
+                  <strong>Gdzie:</strong> Kościół parafialny
+                </p>
+              </div>
+            </div>
+
+            <!-- Żywy Różaniec -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-blue-700">Żywy Różaniec</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Wspólnota Żywego Różańca to grupa modlitewna, której członkowie zobowiązują się
+                do codziennej modlitwy jednej części różańca i comiesięcznego spotkania.
+              </p>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-700">
+                  <strong>Spotkania:</strong> Miesięcznie podczas Mszy<br>
+                  <strong>Zobowiązanie:</strong> Codzienna modlitwa części różańca
+                </p>
+              </div>
+            </div>
+
+            <!-- Godzinki -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-purple-700">Śpiew "Godzinek"</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Tradycyjny śpiew "Godzinek o Niepokalanym Poczęciu Najświętszej Maryi Panny"
+                przed niedzielną Mszą Świętą.
+              </p>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <p class="text-sm text-purple-700">
+                  <strong>Kiedy:</strong> Niedziele o 7:40<br>
+                  <strong>Gdzie:</strong> Kościół parafialny
+                </p>
+              </div>
+            </div>
+
+            <!-- Zmiana tajemnic różańca -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-green-700">Zmiana tajemnic różańca</h3>
+              </div>
+              <p class="text-gray-700 mb-4">
+                Po adoracji w niedziele odbywa się ceremonia zmiany tajemnic różańca
+                zgodnie z liturgią kościelną.
+              </p>
+              <div class="bg-green-50 p-4 rounded-lg">
+                <p class="text-sm text-green-700">
+                  <strong>Kiedy:</strong> Po adoracji w niedziele<br>
+                  <strong>Uczestniczą:</strong> Członkowie Żywego Różańca
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Formacja duchowa -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold mb-8 text-center">Formacja duchowa</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Katechezy dla dorosłych -->
+            <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-8">
+              <h3 class="text-2xl font-bold mb-4 text-blue-800">Katechezy dla dorosłych</h3>
+              <p class="text-blue-700 mb-6 leading-relaxed">
+                Organizujemy spotkania formacyjne dla dorosłych, podczas których omawiamy
+                podstawy wiary katolickiej, życie sakramentalne i aktualne zagadnienia
+                związane z życiem chrześcijańskim.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  Podstawy wiary katolickiej
+                </div>
+                <div class="flex items-center text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  Życie sakramentalne
+                </div>
+                <div class="flex items-center text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  Etyka chrześcijańska
+                </div>
+              </div>
+            </div>
+
+            <!-- Rekolekcje i dni skupienia -->
+            <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-8">
+              <h3 class="text-2xl font-bold mb-4 text-purple-800">Rekolekcje i dni skupienia</h3>
+              <p class="text-purple-700 mb-6 leading-relaxed">
+                W okresach liturgicznych organizujemy rekolekcje i dni skupienia,
+                które pomagają w przygotowaniu do wielkich świąt kościelnych
+                i pogłębieniu życia duchowego.
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-center text-purple-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Rekolekcje adwentowe
+                </div>
+                <div class="flex items-center text-purple-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
+                  </svg>
+                  Rekolekcje wielkopostne
+                </div>
+                <div class="flex items-center text-purple-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Dni skupienia maryjne
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pielgrzymka na Jasną Górę -->
+        <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-lg p-8 mb-16">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-red-200 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-red-800">Pielgrzymka na Jasną Górę</h3>
+            <p class="text-red-700 text-lg mb-6 leading-relaxed">
+              Na przełomie lipca i sierpnia organizujemy pieszą pielgrzymkę na Jasną Górę.
+              To wyjątkowy czas modlitwy, pokuty i braterskiej wspólnoty.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-red-700">
+              <div>
+                <h4 class="font-bold mb-2">Dla pielgrzymów</h4>
+                <p class="text-sm">
+                  Spotkania organizacyjne w Zgorzelcu, przygotowanie duchowe i fizyczne do pielgrzymki.
+                </p>
+              </div>
+              <div>
+                <h4 class="font-bold mb-2">Dla modlących się</h4>
+                <p class="text-sm">
+                  Możliwość duchowego uczestniczenia w pielgrzymce poprzez modlitwę i specjalne materiały.
+                </p>
+              </div>
+              <div>
+                <h4 class="font-bold mb-2">Zapisy</h4>
+                <p class="text-sm">
+                  Informacje o zapisach i spotkaniach znajdziesz w ogłoszeniach parafialnych.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-8 max-w-2xl mx-auto">
+          <h2 class="text-2xl font-bold mb-6 text-center">jak się włączyć?</h2>
+
+          <div class="text-center"> 
+
+            <div class="max-w-xl mx-auto">
+              <p class="text-gray-700 mb-4">
+              Przyjdź na niedzielną mszę świętą i zostań na adorację najświętszego sakramentu.
+              <br>
+              To najłatwiejszy sposób na rozpoczęcie regularnej modlitwy w naszej wspólnocie.
+              </p>
+
+              <p class="text-gray-700">
+              Możesz też skontaktować się z ks. proboszczem, aby dowiedzieć się więcej
+              o różnych formach pogłębiania wiary w naszej parafii.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

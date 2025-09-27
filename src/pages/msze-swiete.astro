@@ -1,0 +1,150 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/Sections/PageHeader.astro";
+---
+
+<BaseLayout
+  title="Msze Święte - Parafia Św. Marii Magdaleny"
+  description="Rozkład Mszy Świętych w parafii Św. Marii Magdaleny w Bogatyni. Znajdź godziny nabożeństw i inne informacje liturgiczne."
+>
+  <PageHeader
+    title="Msze Święte"
+    subtitle="Rozkład nabożeństw w naszej parafii"
+    backgroundImage="/uploads/mass-schedule-bg.webp"
+  />
+
+  <!-- Główny rozkład -->
+  <section class="py-16">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+
+        <!-- Rozkład Mszy Świętych -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 class="text-3xl font-bold mb-8 text-center">Rozkład Mszy Świętych</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Niedziele i uroczystości -->
+            <div class="border-r-0 lg:border-r lg:border-gray-200 lg:pr-8">
+              <h3 class="text-2xl font-bold mb-6 text-center text-primary-600">Niedziele i uroczystości</h3>
+
+              <div class="mb-6">
+                <h4 class="text-lg font-bold mb-4 text-gray-700">Kościół MB Królowej Polski</h4>
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <span class="font-medium">Msza poranna</span>
+                    <span class="text-lg font-bold text-primary-600">8:00</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <span class="font-medium">Msza główna</span>
+                    <span class="text-lg font-bold text-primary-600">11:00</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <span class="font-medium">Msza wieczorna</span>
+                    <span class="text-lg font-bold text-primary-600">17:00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-3 bg-blue-50 rounded">
+                  <p class="text-sm text-gray-700">
+                    <strong>Uwaga:</strong> I i II dzień Świąt Bożego Narodzenia i Wielkanocy, Nowy Rok - o 15:00, a nie o 17:00
+                  </p>
+                </div>
+                <div class="p-3 bg-yellow-50 rounded">
+                  <p class="text-sm text-gray-700">
+                    <strong>Uwaga:</strong> Nie ma Mszy w lipcu i sierpniu
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dni powszednie -->
+            <div class="lg:pl-8">
+              <h3 class="text-2xl font-bold mb-6 text-center text-primary-600">Dni powszednie</h3>
+
+              <div class="space-y-6">
+                <div>
+                  <h4 class="text-lg font-bold mb-4 text-gray-700">Poniedziałek - Piątek</h4>
+                  <div class="flex justify-between items-center p-4 bg-gray-50 rounded">
+                    <span class="font-medium">Msza Święta</span>
+                    <span class="text-xl font-bold text-primary-600">17:00</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-lg font-bold mb-4 text-gray-700">Sobota</h4>
+                  <div class="flex justify-between items-center p-4 bg-gray-50 rounded">
+                    <span class="font-medium">Msza Święta</span>
+                    <span class="text-xl font-bold text-primary-600">9:00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 p-4 bg-red-50 rounded text-center">
+                <p class="text-gray-700 font-medium">
+                  <strong>Uwaga:</strong> Mszy Świętej nie ma we wtorki
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spowiedź -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <h2 class="text-3xl font-bold mb-6 text-center">Okazja do spowiedzi</h2>
+
+          <div class="text-center">
+            <div class="inline-block p-6 bg-primary-50 rounded-lg">
+              <h3 class="text-xl font-bold text-primary-600 mb-2">Każdy piątek miesiąca</h3>
+              <p class="text-lg font-medium">16:30</p>
+              <p class="text-gray-600 mt-2">Zawsze przed Mszą Świętą</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nabożeństwa specjalne -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-3xl font-bold mb-6 text-center">Nabożeństwa specjalne</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-6 bg-purple-50 rounded-lg">
+              <h3 class="text-xl font-bold mb-3 text-purple-700">Nabożeństwo różańcowe, majowe i czerwcowe</h3>
+              <p><strong>Sobota:</strong> 9:00</p>
+              <p><strong>Pozostałe dni:</strong> 16:30</p>
+            </div>
+
+            <div class="p-6 bg-orange-50 rounded-lg">
+              <h3 class="text-xl font-bold mb-3 text-orange-700">Wypominki w listopadzie</h3>
+              <p><strong>Sobota:</strong> 9:00</p>
+              <p><strong>Dni powszednie:</strong> 16:30</p>
+            </div>
+
+            <div class="p-6 bg-blue-50 rounded-lg">
+              <h3 class="text-xl font-bold mb-3 text-blue-700">Roraty w Adwencie</h3>
+              <p><strong>Sobota:</strong> 9:00</p>
+              <p><strong>Dni powszednie:</strong> 17:00</p>
+            </div>
+
+            <div class="p-6 bg-red-50 rounded-lg">
+              <h3 class="text-xl font-bold mb-3 text-red-700">Gorzkie Żale</h3>
+              <p><strong>Niedziele Wielkiego Postu:</strong> 16:30</p>
+            </div>
+
+            <div class="p-6 bg-green-50 rounded-lg">
+              <h3 class="text-xl font-bold mb-3 text-green-700">Droga Krzyżowa</h3>
+              <p><strong>Piątki Wielkiego Postu:</strong> 16:30</p>
+            </div>
+
+
+          <div class="p-6 bg-yellow-50 rounded-lg">
+            <h3 class="text-xl font-bold mb-2 text-yellow-700">Adoracja Wieczysta Najświętszego Sakramentu</h3>
+            <p class="text-lg">18 listopada</p>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
