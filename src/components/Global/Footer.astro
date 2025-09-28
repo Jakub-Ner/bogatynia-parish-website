@@ -24,7 +24,8 @@ const footerNavs = [
     title: "Nabożeństwa",
     items: [
       { text: "Msze Święte", href: "/msze-swiete" },
-      { text: "Ogłoszenia", href: "/ogloszenia" },
+      { text: "Ogłoszenia", href: "/ogłoszenia-parafialne" },
+      { text: "Pogłębianie wiary", href: "/poglebienie-wiary" },
     ],
   },
   {
@@ -32,7 +33,6 @@ const footerNavs = [
     items: [
       { text: "Caritas", href: "/caritas" },
       { text: "Świetlica", href: "/swietlica" },
-      { text: "Pogłębianie wiary", href: "/poglebienie-wiary" },
     ],
   },
 ];
@@ -97,37 +97,10 @@ if (officeHours) {
         </div>
         
         <address class="not-italic mb-4 text-gray-300">
-          <p>ul. Okólna 3/3</p>
+          <p>ul. Okólna 3</p>
           <p>59-916 Bogatynia</p>
-          <p class="mt-2">
-            <a href="tel:+48757784219" class="hover:text-primary-300">
-              +48 757 784 219
-            </a>
-          </p>
-          <p>
-            <a href="mailto:almale@wp.pl" class="hover:text-primary-300">
-              almale@wp.pl
-            </a>
-          </p>
         </address>
         
-        <!-- Office Hours -->
-        <div class="mt-4 text-gray-300">
-          <h4 class="text-sm font-bold mb-2 text-white">Kancelaria Parafialna</h4>
-          {
-            OfficeHoursContent ? (
-              <div class="text-sm prose prose-sm prose-invert max-w-none [&_h3]:text-white [&_h3]:text-sm [&_h3]:font-bold [&_h3]:mb-2 [&_ul]:list-none [&_ul]:p-0 [&_li]:mb-1 [&_strong]:text-white">
-                <OfficeHoursContent />
-              </div>
-            ) : (
-              <div class="text-sm">
-                  <p><strong class="text-white">Poniedziałek-Piątek:</strong> Proszę umawiać się telefonicznie</p>
-                <p><strong class="text-white">Sobota:</strong> Po Mszy Świętej o 9:00</p>
-                <p><strong class="text-white">Niedziela:</strong> Po Mszach Świętych</p>
-              </div>
-            )
-          }
-        </div>
         
         <!-- Social Links -->
         <div class="flex space-x-4 mt-6">

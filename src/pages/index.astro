@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../components/Sections/HeroSection.astro";
-import EventList from "../components/Sections/EventList.astro";
-import SermonList from "../components/Sections/SermonList.astro";
 import Button from "../components/UI/Button.astro";
 ---
 
@@ -20,42 +18,23 @@ import Button from "../components/UI/Button.astro";
   <!-- Msze Święte -->
   <section class="py-16 bg-white">
     <div class="container">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Msze Święte</h2>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Msze Święte</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Sprawdź harmonogram nabożeństw w naszej parafii
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-            <h3 class="text-xl font-bold mb-3">Niedziela</h3>
-            <div class="space-y-2">
-              <p class="text-lg font-bold text-primary-600">8:00</p>
-              <p class="text-lg font-bold text-primary-600">11:00</p>
-              <p class="text-lg font-bold text-primary-600">17:00</p>
-            </div>
-            <p class="text-sm text-gray-600 mt-2">Kościół MB Królowej Polski</p>
-          </div>
-
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-            <h3 class="text-xl font-bold mb-3">Dni powszednie</h3>
-            <p class="text-lg font-bold text-primary-600 mb-2">17:00</p>
-            <p class="text-gray-600 mb-2">Soboty: 9:00</p>
-            <p class="text-sm text-gray-500 italic">We wtorki nie ma Mszy</p>
-          </div>
-
-          <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
-            <h3 class="text-xl font-bold mb-3">Zatonie Wieś</h3>
-            <p class="text-lg font-bold text-primary-600 mb-2">9:30</p>
-            <p class="text-sm text-gray-500 italic">Nie ma w lipcu i sierpniu</p>
-          </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="card p-8 mb-6">
+          <h3 class="text-xl font-bold mb-3">Harmonogram Mszy Świętych</h3>
+          <p class="text-gray-700 mb-4">
+            Zapraszamy na Msze Święte odprawiane w naszej parafii. Sprawdź pełny harmonogram nabożeństw oraz informacje o spowiedzi.
+          </p>
+          <Button href="/msze-swiete">
+              Msze Święte
+          </Button>
         </div>
-
-        <div class="bg-blue-50 p-6 rounded-lg mb-8">
-          <h4 class="font-bold mb-2">Spowiedź</h4>
-          <p class="text-gray-700">Każdy piątek miesiąca o 16:30. Zawsze przed Mszą Świętą</p>
-        </div>
-
-        <Button href="/msze-swiete" variant="outline">
-            Zobacz szczegóły
-        </Button>
       </div>
     </div>
   </section>
@@ -111,8 +90,8 @@ import Button from "../components/UI/Button.astro";
           <p class="text-gray-700 mb-4">
             Aktualne ogłoszenia parafialne będą tutaj publikowane. Zapraszamy do regularnego odwiedzania tej sekcji.
           </p>
-          <Button href="/ogloszenia" variant="outline">
-            Zobacz wszystkie ogłoszenia
+          <Button href="/ogłoszenia-parafialne">
+              Ogłoszenia Parafialne
           </Button>
         </div>
       </div>

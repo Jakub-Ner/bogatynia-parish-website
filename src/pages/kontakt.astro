@@ -22,7 +22,7 @@ import Button from "../components/UI/Button.astro";
         <div>
           <h2 class="text-3xl font-bold mb-6">Napisz do nas</h2>
           
-          <form id="contact-form" class="space-y-6">
+          <form id="contact-form" class="space-y-6" action="https://formspree.io/f/mnngjyne" method="post">
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Imię i nazwisko</label>
               <input 
@@ -68,6 +68,7 @@ import Button from "../components/UI/Button.astro";
                 <option value="Intencje mszalne">Intencje mszalne</option>
                 <option value="Wolontariat">Wolontariat</option>
                 <option value="Sakramenty">Sakramenty</option>
+                <option value="Kolęda">Kolęda</option>
                 <option value="Inne">Inne</option>
               </select>
             </div>
@@ -90,14 +91,6 @@ import Button from "../components/UI/Button.astro";
             </div>
           </form>
           
-          <script>
-            // Handle form submission
-            document.getElementById('contact-form')?.addEventListener('submit', function(e) {
-              e.preventDefault();
-              alert('Dziękujemy za wiadomość! Skontaktujemy się z Tobą wkrótce.');
-              this.reset();
-            });
-          </script>
         </div>
         
         <!-- Contact Information -->
@@ -117,7 +110,7 @@ import Button from "../components/UI/Button.astro";
               <div class="ml-4">
                 <h3 class="text-xl font-bold mb-1">Adres</h3>
                 <address class="not-italic text-gray-700">
-                  <p>ul. Okólna 3/3</p>
+                  <p>ul. Okólna 3</p>
                   <p>59-916 Bogatynia</p>
                 </address>
               </div>
@@ -175,9 +168,7 @@ import Button from "../components/UI/Button.astro";
               <div class="ml-4">
                 <h3 class="text-xl font-bold mb-1">Kancelaria Parafialna</h3>
                 <div class="text-gray-700">
-                  <p><strong>Poniedziałek - Piątek:</strong> Proszę umawiać się telefonicznie</p>
-                  <p><strong>Sobota:</strong> Po Mszy Świętej o 9:00</p>
-                  <p><strong>Niedziela:</strong> Po Mszach Świętych</p>
+                  <p><strong>Czwartek:</strong> 16:00 - 16:45</p>
                 </div>
               </div>
             </div>
