@@ -31,20 +31,12 @@ const eventsCollection = defineCollection({
   }),
 });
 
-const sermonsCollection = defineCollection({
+const announcementsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    slug: z.string().optional(), // Auto-generated if not provided
     date: z.date(),
-    speaker: z.string(),
-    series: z.string().optional(),
-    scripture: z.string().optional(),
-    audioUrl: z.string().url().optional(),
-    videoUrl: z.string().url().optional(),
-    image: z.string().startsWith('/uploads/sermons/').optional(), // Thumbnail
-    summary: z.string().optional(),
-    tags: z.array(z.string()).optional(),
+    featured: z.boolean().default(false),
     draft: z.boolean().default(false),
   }),
 });
@@ -87,22 +79,11 @@ const siteInfoCollection = defineCollection({
   }),
 });
 
-const announcementsCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    featured: z.boolean().default(false),
-    draft: z.boolean().default(false),
-  }),
-});
-
 export const collections = {
   staff: staffCollection,
   events: eventsCollection,
-  sermons: sermonsCollection,
+  announcements: announcementsCollection,
   ministries: ministriesCollection,
   blog: blogCollection,
   siteInfo: siteInfoCollection,
-  announcements: announcementsCollection,
 };
