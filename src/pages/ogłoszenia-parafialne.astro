@@ -1,18 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/Sections/PageHeader.astro";
-import { getCollection } from 'astro:content';
+import { fetchAnnouncement } from "../utils/announcements";
+import { marked } from 'marked';
 
-// Get the current announcements
-const announcements = await getCollection('announcements', ({ data }) => {
-  return !data.draft;
-});
+// Fetch the current announcement from Vercel Blob Storage
+const currentAnnouncement = await fetchAnnouncement();
 
-// Sort by date, get the most recent
-const currentAnnouncement = announcements
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
-
-const { Content } = await currentAnnouncement.render();
+// Convert markdown to HTML
+const htmlContent = marked(currentAnnouncement.content);
 ---
 
 <BaseLayout
@@ -38,7 +34,7 @@ const { Content } = await currentAnnouncement.render();
               </svg>
             </div>
             <div>
-              <h2 class="text-2xl font-bold">{currentAnnouncement.data.title}</h2>
+              <!-- <h2 class="text-2xl font-bold">{currentAnnouncement.data.title}</h2> -->
               <p class="text-gray-600">
                 Aktualne od {currentAnnouncement.data.date.toLocaleDateString('pl-PL', {
                   year: 'numeric',
@@ -50,7 +46,7 @@ const { Content } = await currentAnnouncement.render();
           </div>
 
           <div class="prose prose-lg max-w-none prose-headings:text-primary-800 prose-h2:bg-primary-50 prose-h2:p-4 prose-h2:rounded-lg prose-h3:text-primary-700 prose-h3:bg-primary-25 prose-h3:p-3 prose-h3:rounded prose-strong:text-primary-700 prose-a:text-primary-600 hover:prose-a:text-primary-700">
-            <Content />
+            <div set:html={htmlContent} />
           </div>
         </div>
 
