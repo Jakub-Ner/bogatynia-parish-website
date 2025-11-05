@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/Sections/PageHeader.astro";
+import { getCollection } from 'astro:content';
+
+// Fetch all prayers and sort by order
+const prayers = (await getCollection('prayers'))
+  .filter(prayer => !prayer.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -190,6 +196,39 @@ import PageHeader from "../components/Sections/PageHeader.astro";
 
           </div>
         </div>
+
+        <!-- Modlitwy i Intencje -->
+        {prayers.length > 0 && (
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Modlitwy i Intencje</h2>
+
+            <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+              {prayers.map(async (prayer) => {
+                const { Content } = await prayer.render();
+                return (
+                  <div class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-center">
+                      <h3 class="text-2xl font-bold text-white">{prayer.data.title}</h3>
+                    </div>
+
+                    <div class="p-8 text-center">
+                      {prayer.data.subtitle && (
+                        <h5 class="text-xl font-semibold text-indigo-700 mb-6">{prayer.data.subtitle}</h5>
+                      )}
+                      <div class="relative">
+                        <span class="text-4xl text-indigo-300 absolute -left-2 -top-2">"</span>
+                        <div class="prose prose-lg max-w-none mx-auto text-gray-700 leading-relaxed italic px-6">
+                          <Content />
+                        </div>
+                        <span class="text-4xl text-indigo-300 absolute -right-2 -bottom-2">"</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <!-- Pielgrzymka na Jasną Górę -->
         <div class="bg-gradient-to-r from-white to-yellow-50 rounded-lg p-8 mb-16">

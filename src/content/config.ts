@@ -79,6 +79,19 @@ const siteInfoCollection = defineCollection({
   }),
 });
 
+const prayersCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date().optional(),
+    category: z.string().optional(), // e.g., "Intencja Papieska", "Modlitwa różańcowa"
+    month: z.string().optional(), // e.g., "Listopad 2025"
+    subtitle: z.string().optional(), // e.g., "O umiejętność zapobiegania samobójstwom"
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   staff: staffCollection,
   events: eventsCollection,
@@ -86,4 +99,5 @@ export const collections = {
   ministries: ministriesCollection,
   blog: blogCollection,
   siteInfo: siteInfoCollection,
+  prayers: prayersCollection,
 };
