@@ -92,6 +92,17 @@ const prayersCollection = defineCollection({
   }),
 });
 
+const caritasCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    category: z.string().optional(), // e.g., "Zbiórka", "Pomoc żywnościowa"
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   staff: staffCollection,
   events: eventsCollection,
@@ -100,4 +111,5 @@ export const collections = {
   blog: blogCollection,
   siteInfo: siteInfoCollection,
   prayers: prayersCollection,
+  caritas: caritasCollection,
 };

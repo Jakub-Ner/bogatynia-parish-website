@@ -1,6 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/Sections/PageHeader.astro";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+
+// Get caritas articles sorted by date (newest first)
+const caritasArticles = await getCollection("caritas", ({ data }) => !data.draft);
+const sortedArticles = caritasArticles.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Format date helper
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat("pl-PL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+};
 ---
 
 <BaseLayout
@@ -134,6 +151,87 @@ import PageHeader from "../components/Sections/PageHeader.astro";
           </div>
         </div>
 
+        <!-- Aktualności Caritas -->
+        {sortedArticles.length > 0 && (
+          <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-8 text-center">Aktualności</h2>
+            <div class="space-y-6">
+              {sortedArticles.map(async (article) => {
+                const htmlContent = await marked(article.body || "");
+                return (
+                  <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-700 px-6 py-3">
+                      <div class="flex flex-wrap items-center justify-between gap-2">
+                        <h3 class="text-lg md:text-xl font-bold text-white">
+                          {article.data.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <div class="p-6 prose prose-sm max-w-none" set:html={htmlContent} />
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <!-- Fundusze Europejskie na Pomoc Żywnościową -->
+        <div class="mb-12">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
+              <h2 class="text-xl md:text-2xl font-bold text-white text-center">
+                Fundusze Europejskie na Pomoc Żywnościową 2021-2027
+              </h2>
+              <p class="text-blue-100 text-center text-sm mt-1">
+                Okres realizacji: grudzień 2024 - wrzesień 2025
+              </p>
+            </div>
+            <div class="p-4 md:p-6 flex flex-col items-center">
+              <button
+                id="open-image-modal"
+                class="cursor-zoom-in hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+                aria-label="Otwórz plakat w pełnym rozmiarze"
+              >
+                <img
+                  src="/uploads/fundusze-europejskie-pomoc-zywnosciowa-2024-2025.png"
+                  alt="Plakat informacyjny - Fundusze Europejskie na Pomoc Żywnościową 2021-2027. Kryterium dochodowe: 2676,50 zł dla osoby samotnej, 2180,95 zł dla osoby w rodzinie. Lista produktów spożywczych dostępnych w ramach programu."
+                  class="max-h-[400px] w-auto rounded-lg shadow-sm"
+                  loading="lazy"
+                />
+              </button>
+              <p class="text-center text-gray-500 text-sm mt-3">
+                Kliknij na plakat, aby powiększyć
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Modal -->
+        <div
+          id="image-modal"
+          class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Powiększony plakat"
+        >
+          <button
+            id="close-modal"
+            class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            aria-label="Zamknij"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="relative max-w-5xl max-h-[90vh] overflow-auto">
+            <img
+              src="/uploads/fundusze-europejskie-pomoc-zywnosciowa-2024-2025.png"
+              alt="Plakat informacyjny - Fundusze Europejskie na Pomoc Żywnościową 2021-2027"
+              class="max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+
         <!-- Jak otrzymać pomoc -->
         <div class="bg-yellow-50 rounded-lg p-8 mb-12">
           <h2 class="text-2xl font-bold mb-6 text-yellow-800 text-center">Jak otrzymać pomoc?</h2>
@@ -196,3 +294,40 @@ import PageHeader from "../components/Sections/PageHeader.astro";
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('open-image-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const modal = document.getElementById('image-modal');
+
+    const openModal = () => {
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    openBtn?.addEventListener('click', openModal);
+    closeBtn?.addEventListener('click', closeModal);
+
+    // Close on backdrop click
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  });
+</script>
