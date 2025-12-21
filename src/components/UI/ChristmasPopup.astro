@@ -1,0 +1,129 @@
+---
+---
+<div id="christmas-popup" class="fixed inset-0 z-50 flex  items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" aria-modal="true" role="dialog">
+    <div class="relative w-full max-w-5xl max-h-[80vh] md:max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col" id="christmas-popup-content">
+
+        <!-- Close button -->
+        <button id="close-popup" class="absolute top-4 right-4 z-50 p-2 bg-white/90 hover:bg-white rounded-full text-gray-600 hover:text-gray-900 shadow-sm transition-colors" aria-label="Zamknij">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="overflow-y-auto w-full">
+            <div class="flex flex-col md:flex-row min-h-full">
+                <!-- Image Section -->
+                <div class="hidden md:block md:w-1/2 bg-gray-100 relative min-h-[300px] md:min-h-0">
+                    <img 
+                        src="/uploads/christmas-wishes.png" 
+                        alt="Boże Narodzenie" 
+                        class="absolute inset-0 w-full h-full object-cover"
+                    />
+                </div>
+
+                <!-- Content Section -->
+                <div class="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-amber-50 to-orange-50 text-center">
+                <div class="mb-6">
+                    <p class="font-serif italic text-amber-800 text-lg leading-relaxed">
+                    „Pan sam da wam znak” <br>
+                    „Syn został nam dany”
+                    </p>
+                </div>
+
+                <div class="space-y-4 text-gray-800 font-light leading-relaxed text-lg">
+                    <p class="font-semibold text-base mb-2">Drodzy Bracia i Siostry,</p>
+                    <p>
+                        Życzę Wam, aby narodzenie Jezusa Chrystusa - Syna Bożego dało pokój i radość w codziennym życiu.
+                    </p>
+                    <p>
+                        Niech przychodzący do nas Pan darzy Was swoimi łaskami, zdrowiem, szczęściem, radością i wszelką pomyślnością, a nadchodzący Nowy 2026 Rok będzie dużo lepszy od tego, który zaraz się zakończy.
+                    </p>
+                    <p>
+                        Życzę wszelkiego dobra, rodzinnej bliskości, świątecznego wypoczynku, jak też realizacji wszystkich dobrych planów i zamiarów.
+                    </p>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-amber-200 sm:mt:1">
+                    <p class="font-light text-base mb-1">SZCZĘŚĆ BOŻE I WSZYSTKIEGO NAJLEPSZEGO!</p>
+                    <p class="font-serif text-amber-800 mt-2">KS. Aleksander M. Leszczyński</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const POPUP_ID = 'christmas-popup';
+    const CONTENT_ID = 'christmas-popup-content';
+    const STORAGE_KEY = 'christmas_popup_last_seen';
+
+    function initPopup() {
+        const popup = document.getElementById(POPUP_ID);
+        const content = document.getElementById(CONTENT_ID);
+        const closeBtn = document.getElementById('close-popup');
+
+        if (!popup || !content || !closeBtn) return;
+
+        // Check if shown today
+        const lastSeen = localStorage.getItem(STORAGE_KEY);
+        const today = new Date().toDateString();
+
+        if (lastSeen === today) {
+            return;
+        }
+
+        // Show popup function
+        const showPopup = () => {
+            popup.classList.remove('hidden');
+            // Trigger reflow
+            void popup.offsetWidth; 
+            
+            popup.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        };
+
+        // Hide popup function
+        const hidePopup = () => {
+            popup.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 300); // match transition duration
+
+            // Save to local storage
+            localStorage.setItem(STORAGE_KEY, today);
+        };
+
+        // Event listeners
+        closeBtn.addEventListener('click', hidePopup);
+        
+        // Close on click outside
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                hidePopup();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !popup.classList.contains('hidden')) {
+                hidePopup();
+            }
+        });
+
+        // Show after a small delay
+        setTimeout(showPopup, 1000);
+    }
+
+    // Run on page load
+    document.addEventListener('astro:page-load', initPopup);
+    // Fallback for initial load if view transitions aren't used or behave differently
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPopup);
+    } else {
+        initPopup();
+    }
+</script>
