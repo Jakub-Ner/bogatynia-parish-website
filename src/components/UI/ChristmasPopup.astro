@@ -57,7 +57,26 @@
     const CONTENT_ID = 'christmas-popup-content';
     const STORAGE_KEY = 'christmas_popup_last_seen';
 
+    function isWithinChristmasWindow(now) {
+        // Show from Dec 24 through Feb 1 (inclusive), spanning the year boundary.
+        const year = now.getFullYear();
+        const dec24ThisYear = new Date(year, 11, 24, 0, 0, 0, 0);
+
+        // If we're before Dec 24, we are in the Jan/early-Feb part of the window.
+        const start = (now < dec24ThisYear)
+            ? new Date(year - 1, 11, 24, 0, 0, 0, 0)
+            : dec24ThisYear;
+
+        // Feb is month=1 (0-based). End at 23:59:59.999 on Feb 1.
+        const end = new Date(start.getFullYear() + 1, 1, 1, 23, 59, 59, 999);
+
+        return now >= start && now <= end;
+    }
+
     function initPopup() {
+        const now = new Date();
+        if (!isWithinChristmasWindow(now)) return;
+
         const popup = document.getElementById(POPUP_ID);
         const content = document.getElementById(CONTENT_ID);
         const closeBtn = document.getElementById('close-popup');
@@ -66,7 +85,7 @@
 
         // Check if shown today
         const lastSeen = localStorage.getItem(STORAGE_KEY);
-        const today = new Date().toDateString();
+        const today = now.toDateString();
 
         if (lastSeen === today) {
             return;
