@@ -12,6 +12,8 @@ export interface Announcement {
   content: string;
 }
 
+const BLOB_BASE_URL = "https://hhuvw60wkv08yr9b.public.blob.vercel-storage.com";
+
 function announcementDate(): string {
   // Use last Sunday or today if today is Sunday
   const today = new Date();
@@ -20,38 +22,48 @@ function announcementDate(): string {
   return today.toISOString().split("T")[0]; // Format as YYYY-MM-DD
 }
 
-export async function fetchAnnouncement(): Promise<Announcement> {
+function parseAnnouncement(markdownContent: string, defaultTitle: string): Announcement {
+  const { data, content } = matter(markdownContent);
+
+  return {
+    data: {
+      title: data.title || defaultTitle,
+      date: data.date ? new Date(data.date) : new Date(),
+      featured: data.featured ?? false,
+      draft: data.draft ?? false,
+    },
+    content: content.trim(),
+  };
+}
+
+async function fetchFromBlob(
+  path: string,
+  defaultTitle: string
+): Promise<Announcement> {
   try {
-    const baseUrl =
-      "https://hhuvw60wkv08yr9b.public.blob.vercel-storage.com/ogloszenia";
-    const url = `${baseUrl}/${announcementDate()}.md`;
-    console.log("Fetching announcement from:", url);
+    const url = `${BLOB_BASE_URL}${path}`;
+    console.log("Fetching from blob storage:", url);
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch announcement: ${response.statusText}`);
+      throw new Error(`Failed to fetch: ${response.statusText}`);
     }
 
     const markdownContent = await response.text();
-
-    // Parse frontmatter and content
-    const { data, content } = matter(markdownContent);
-
-    // Validate and transform the data
-    const announcement: Announcement = {
-      data: {
-        title: data.title || "Ogłoszenia Parafialne",
-        date: data.date ? new Date(data.date) : new Date(),
-        featured: data.featured ?? false,
-        draft: data.draft ?? false,
-      },
-      content: content.trim(),
-    };
-
-    // Update cache
-    return announcement;
+    return parseAnnouncement(markdownContent, defaultTitle);
   } catch (error) {
-    console.error("Error fetching announcement from blob storage:", error);
+    console.error("Error fetching from blob storage:", error);
     throw error;
   }
+}
+
+export async function fetchAnnouncement(): Promise<Announcement> {
+  return fetchFromBlob(
+    `/ogloszenia/${announcementDate()}.md`,
+    "Ogłoszenia Parafialne"
+  );
+}
+
+export async function fetchWypominki(): Promise<Announcement> {
+  return fetchFromBlob("/wypominki/wypominki.md", "Wypominki");
 }

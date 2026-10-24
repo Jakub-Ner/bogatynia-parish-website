@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/Sections/PageHeader.astro";
-import { fetchAnnouncement } from "../utils/announcements";
+import { fetchAnnouncement, fetchWypominki } from "../utils/announcements";
 import { marked } from 'marked';
-import { getEntry } from 'astro:content';
 
 // Enable server-side rendering for this page (opt-out of static generation)
 export const prerender = false;
@@ -26,14 +25,27 @@ const revalidateSeconds = getSecondsUntilNextSunday();
 Astro.response.headers.set('CDN-Cache-Control', `public, s-maxage=${revalidateSeconds}, stale-while-revalidate=86400`);
 
 // Fetch the current announcement from Vercel Blob Storage
-const currentAnnouncement = await fetchAnnouncement();
+let htmlContent = 'Przepraszamy, nie udało się załadować ogłoszeń. Spróbuj ponownie później.';
+try{
+  const currentAnnouncement = await fetchAnnouncement();
+  htmlContent = marked(currentAnnouncement.content, { async: false });
+} catch (error) {
+  console.error('Error fetching current announcement:', error);
+}
 
-// Convert markdown to HTML
-const htmlContent = marked(currentAnnouncement.content);
+// Fetch the wypominki content from blob storage
+let wypominkiHtml = 'Przepraszamy, nie udało się załadować wypominków. Spróbuj ponownie później.';
+let wypominkiTitle = 'Wypominki';
+let wypominkiDate: Date | null = null;
+try {
+  const wypominkiBlob = await fetchWypominki();
+  wypominkiHtml = marked(wypominkiBlob.content, { async: false });
+  wypominkiTitle = wypominkiBlob.data.title;
+  wypominkiDate = wypominkiBlob.data.date;
+} catch (error) {
+  console.error('Error fetching wypominki:', error);
+}
 
-// Fetch the wypominki content from the announcements collection
-const wypominkiEntry = await getEntry('announcements', 'wypominki');
-const wypominkiHtml = wypominkiEntry ? marked(wypominkiEntry.body) : '';
 ---
 
 <BaseLayout
@@ -76,7 +88,7 @@ const wypominkiHtml = wypominkiEntry ? marked(wypominkiEntry.body) : '';
         </div>
 
         <!-- Wypominki section -->
-        {wypominkiEntry && (
+        {wypominkiHtml && (
           <div class="bg-white rounded-lg shadow-lg p-8">
             <div class="flex items-center mb-6">
               <div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mr-4">
@@ -85,14 +97,16 @@ const wypominkiHtml = wypominkiEntry ? marked(wypominkiEntry.body) : '';
                 </svg>
               </div>
               <div>
-                <h2 class="text-2xl font-bold">{wypominkiEntry.data.title}</h2>
-                <p class="text-gray-600">
-                  Opublikowano {wypominkiEntry.data.date.toLocaleDateString('pl-PL', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </p>
+                <h2 class="text-2xl font-bold">{wypominkiTitle}</h2>
+                {wypominkiDate && (
+                  <p class="text-gray-600">
+                    Opublikowano {wypominkiDate.toLocaleDateString('pl-PL', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </p>
+                )}
               </div>
             </div>
 
