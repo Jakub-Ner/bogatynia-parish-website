@@ -26,8 +26,8 @@ Astro.response.headers.set('CDN-Cache-Control', `public, s-maxage=${revalidateSe
 
 // Fetch the current announcement from Vercel Blob Storage
 let htmlContent = 'Przepraszamy, nie udało się załadować ogłoszeń. Spróbuj ponownie później.';
+const currentAnnouncement = await fetchAnnouncement();
 try{
-  const currentAnnouncement = await fetchAnnouncement();
   htmlContent = marked(currentAnnouncement.content, { async: false });
 } catch (error) {
   console.error('Error fetching current announcement:', error);
